@@ -1,0 +1,11 @@
+/tramp
+/elpa
+/eshell
+/semanticdb
+/auto-complete
+/auto-save-list
+ac-comphist.dat
+abbrev_defs
+*.elc
+*~
+\#*

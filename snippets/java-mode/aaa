@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: ArrangeActAssert Test
+# key: aaa
+# group: Unit Test
+# --
+@Test
+public void test${1:Method}() {
+ $>// Arrange
+ $>$2
+
+ $>// Act
+ $>$3
+
+ $>// Assert
+ $>$0
+}

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Before Tests
+# key: bef
+# group: Unit Test
+# --
+@Before
+public void setUpForTests() {
+ $>$0
+}

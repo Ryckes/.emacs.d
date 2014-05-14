@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: assertEquals
+# key: ase
+# --
+assertEquals(${1:expectedOutput}, ${2:output});
