@@ -1,3 +1,6 @@
+(package-install-if-missing "web-mode")
+(require 'web-mode)
+
 ; web-mode for HTML, CSS, JS and PHP files
 (add-to-list 'auto-mode-alist '("\\.php" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html" . web-mode))
@@ -7,7 +10,6 @@
 
 ; Customizing syntax highlighting
 (setq kev-html-color "red4") ; kev- is for namespacing
-(require 'web-mode)
 (set-face-attribute 'web-mode-html-tag-face nil :foreground kev-html-color)
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground kev-html-color)
 (set-face-attribute 'web-mode-html-attr-value-face nil :foreground "OrangeRed3")

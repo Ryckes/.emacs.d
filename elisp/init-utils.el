@@ -1,4 +1,10 @@
 
+(unless (>= emacs-major-version 24)  
+  (defun split-window-right ()
+    (interactive)
+    (split-window-horizontally)
+    ))
+
 ; Open main configuration files
 (defun load-conf-files ()
   (interactive)

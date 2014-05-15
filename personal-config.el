@@ -1,12 +1,15 @@
 ; Remove menus and toolbar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ; Make Text mode the default mode for new buffers
 (setq-default major-mode 'text-mode)
 
 ; Dark theme
-(load-theme 'deeper-blue)
+(when (>= emacs-major-version 24)
+  (load-theme 'deeper-blue))
+
 ; Improve font-lock (highlighting) in java-mode
 (make-face 'font-lock-operator-face)
 (make-face 'font-lock-end-statement)
@@ -17,14 +20,15 @@
 ("\\(\\[\\|\\]\\|[|!\\.\\+\\=\\&\\<\\>]\\|-\\|\\/\\|\\%\\|\\*\\|,\\|(\\|)\\|>\\|<\\|{\\|}\\)" 1 font-lock-operator-face )
 ("\\(;\\)" 1 font-lock-end-statement) ))
 
-(add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'init-web)
 (require 'init-git)
 (require 'init-utils)
 
+
 ; Enable YASnippet
-(add-to-list 'load-path
-	     "~/.emacs.d/elpa/yasnippet-0.8.0")
+
+(package-install-if-missing "cl-lib")
+(package-install-if-missing "yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 ; Compatibiliy of YASnippet and auto-complete

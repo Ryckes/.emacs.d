@@ -2,15 +2,10 @@
 ;; No backup files
 (setq make-backup-files nil)
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-
-;; Add MELPA repo
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  )
+(require 'init-dep)
 
 ; After elpa
 (load "personal-config")
@@ -39,3 +34,4 @@
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
+
