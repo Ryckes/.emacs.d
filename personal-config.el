@@ -17,7 +17,7 @@
 ("\\(\\[\\|\\]\\|[|!\\.\\+\\=\\&\\<\\>]\\|-\\|\\/\\|\\%\\|\\*\\|,\\|(\\|)\\|>\\|<\\|{\\|}\\)" 1 font-lock-operator-face )
 ("\\(;\\)" 1 font-lock-end-statement) ))
 
-(add-to-list 'load-path "elisp")
+(add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'init-web)
 (require 'init-git)
 (require 'init-utils)
