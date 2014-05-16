@@ -9,10 +9,7 @@
 (defun load-conf-files ()
   (interactive)
   (delete-other-windows)
-  (split-window-right)
-  (find-file "~/.emacs.d/init.el")
-  (other-window '1)
-  (find-file "~/.emacs.d/personal-config.el"))
+  (find-file "~/.emacs.d/init.el"))
 
 (global-set-key (kbd "C-c c") 'load-conf-files)
 
