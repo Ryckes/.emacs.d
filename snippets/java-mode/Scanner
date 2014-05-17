@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Scanner for stdin
+# key: kbd
+# --
+$>Scanner kbd = new Scanner(System.in).useLocale(Locale.US);
+$>$0
