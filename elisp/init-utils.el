@@ -63,5 +63,9 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-c r") 'eval-and-replace)
 
 
+; Remove annoying message "this buffer still has clients" when killing a buffer
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-functions)
+
+
 
 (provide 'init-utils)

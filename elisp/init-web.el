@@ -18,5 +18,10 @@
 (set-face-attribute 'web-mode-keyword-face nil :foreground "dark cyan") ; php keywords
 
 (define-key web-mode-map (kbd "RET") 'newline-and-indent)
+(define-key web-mode-map (kbd "}") '(lambda (char)
+				      (interactive "p")
+				      (self-insert-command char)
+				      (indent-for-tab-command)
+				      ))
 
 (provide 'init-web)
