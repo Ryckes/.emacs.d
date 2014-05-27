@@ -4,6 +4,7 @@
 (yas-global-mode 1)
 ; Compatibiliy of YASnippet and auto-complete
 (setq ac-source-yasnippet nil)
+(setq mode-require-final-newline nil)
 (defun add-yasnippet-dir (dir)
   "Add DIR to the list of directories of YASnippet snippets."
   (setq yas-snippet-dirs (append yas-snippet-dirs 
