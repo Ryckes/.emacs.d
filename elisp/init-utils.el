@@ -23,6 +23,23 @@
 (global-set-key (kbd "C-c i") 'reload-config);
 
 
+(defun toggle-ui (val)
+  (interactive)
+  (menu-bar-mode val)
+  (tool-bar-mode val)
+  (scroll-bar-mode val))
+(defun show-ui ()
+  (interactive)
+  (toggle-ui 1))
+(defun hide-ui ()
+  (interactive)
+  (toggle-ui -1))
+
+(global-set-key (kbd "<f5>") 'show-ui)
+(global-set-key (kbd "<f6>") 'hide-ui)
+
+(hide-ui) ; Please
+
 ; Holy sudo-edit
 (defun sudo-edit (&optional arg)
   "Edit currently visited file as root.
@@ -47,7 +64,8 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 				 (message "Buffer eval'd.") ; Need feedback
 				 ))
 (global-set-key (kbd "C-c e") 'eval-expression)
-
+(global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
+(global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
 ; Eval and replace (for in-buffer things)
 (defun eval-and-replace ()
