@@ -9,10 +9,10 @@
 ;(add-to-list 'auto-mode-alist '("\\.css" . web-mode))
 
 ; Customizing syntax highlighting
-(setq kev-html-color "red4") ; kev- is for namespacing
+(setq kev-html-color "dodger blue") ; kev- is for namespacing
 (set-face-attribute 'web-mode-html-tag-face nil :foreground kev-html-color)
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground kev-html-color)
-(set-face-attribute 'web-mode-html-attr-value-face nil :foreground "OrangeRed3")
+(set-face-attribute 'web-mode-html-attr-value-face nil :foreground "orchid")
 (set-face-attribute 'web-mode-preprocessor-face nil :foreground "DeepSkyBlue4") ; php opening and closing tags
 (set-face-attribute 'web-mode-string-face nil :foreground "magenta4") ; php strings
 (set-face-attribute 'web-mode-keyword-face nil :foreground "dark cyan") ; php keywords
