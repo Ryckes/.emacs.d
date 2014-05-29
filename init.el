@@ -4,7 +4,6 @@
 ;; No backup files
 (setq make-backup-files nil)
 
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
 ; Get 'package' if not present and define some utilities
