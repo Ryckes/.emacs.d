@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Assign variable to attribute of the same name
+# key: attr
+# --
+$this->$1 = $$1;
+$0

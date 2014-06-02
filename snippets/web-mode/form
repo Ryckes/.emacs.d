@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Form item
+# key: fit
+# --
+<label>
+  <span>$1</span>
+  <input type="${2:text}" name="$0" />
+</label>
