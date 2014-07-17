@@ -9,6 +9,7 @@
 ; Get 'package' if not present and define some utilities
 (require 'init-dep)
 
+(require 'init-encoding)
 (require 'init-c)
 (require 'init-latex)
 (require 'init-java)
