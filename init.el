@@ -1,5 +1,6 @@
 
 (setq inhibit-startup-screen t)
+(setq ring-bell-function 'ignore) ; Important
 
 ;; No backup files
 (setq make-backup-files nil)
