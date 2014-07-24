@@ -78,12 +78,14 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
     (error (message "Invalid expression")
 	   (insert (current-kill 0)))))
 
-(global-set-key (kbd "C-c r") 'eval-and-replace)
+(global-set-key (kbd "C-c g") 'eval-and-replace)
 
 
 ; Remove annoying message "this buffer still has clients" when killing a buffer
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-functions)
 
-
+; Set browser to google-chrome
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
 
 (provide 'init-utils)

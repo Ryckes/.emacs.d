@@ -18,6 +18,7 @@
 (require 'init-git)
 (require 'init-utils)
 (require 'init-snippets)
+(require 'init-org)
 ; Currently disabled:
 ; (require 'init-autocomplete)
 
