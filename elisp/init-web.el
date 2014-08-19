@@ -1,14 +1,19 @@
 (package-install-if-missing "web-mode")
 (require 'web-mode)
 
-; web-mode for HTML, CSS, JS and PHP files
+;; web-mode for HTML, CSS, and PHP files
 (add-to-list 'auto-mode-alist '("\\.php" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html" . web-mode))
-; Disabled
-;(add-to-list 'auto-mode-alist '("\\.js" . web-mode))
-;(add-to-list 'auto-mode-alist '("\\.css" . web-mode))
+;; Disabled
+;;(add-to-list 'auto-mode-alist '("\\.js" . web-mode))
 
-; Customizing syntax highlighting
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
+(setq web-mode-indent-style 4)
+
+;; Customizing syntax highlighting
 (setq kev-html-color "dodger blue") ; kev- is for namespacing
 (set-face-attribute 'web-mode-html-tag-face nil :foreground kev-html-color)
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground kev-html-color)

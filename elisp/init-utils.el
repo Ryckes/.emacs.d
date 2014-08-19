@@ -5,7 +5,7 @@
     (split-window-horizontally)
     ))
 
-; Open main configuration files
+;; Open main configuration files
 (defun load-conf-files ()
   (interactive)
   (delete-other-windows)
@@ -14,7 +14,7 @@
 (global-set-key (kbd "C-c c") 'load-conf-files)
 
 
-; Reload config files
+;; Reload config files
 (defun reload-config ()
   (interactive)
   (load-file "~/.emacs.d/init.el")
@@ -40,7 +40,7 @@
 
 (hide-ui) ; Please
 
-; Holy sudo-edit
+;; Holy sudo-edit
 (defun sudo-edit (&optional arg)
   "Edit currently visited file as root.
 
@@ -56,7 +56,7 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-x C-r") 'sudo-edit)
 
 
-; Some key bindings
+;; Some key bindings
 (global-set-key (kbd "C-c C-e") 'query-replace)
 (global-set-key (kbd "C-c C-f") 'query-replace-regexp)
 (global-set-key (kbd "C-c b") '(lambda () (interactive)
@@ -67,7 +67,7 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
 (global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)
 
-; Eval and replace (for in-buffer things)
+;; Eval and replace (for in-buffer things)
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
@@ -81,11 +81,16 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-c g") 'eval-and-replace)
 
 
-; Remove annoying message "this buffer still has clients" when killing a buffer
+;; Remove annoying message "this buffer still has clients" when killing a buffer
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-functions)
 
-; Set browser to google-chrome
+;; Set browser to google-chrome
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+
+;; Hungry delete mode
+(package-install-if-missing "hungry-delete")
+(require 'hungry-delete)
+(global-hungry-delete-mode)
 
 (provide 'init-utils)

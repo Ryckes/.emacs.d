@@ -7,7 +7,7 @@
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-; Get 'package' if not present and define some utilities
+;; Get 'package' if not present and define some utilities
 (require 'init-dep)
 
 (require 'init-encoding)
@@ -19,9 +19,9 @@
 (require 'init-utils)
 (require 'init-snippets)
 (require 'init-org)
-; Currently disabled:
-; (require 'init-autocomplete)
+;; Currently disabled:
+;; (require 'init-autocomplete)
 
-; Dark theme
+;; Dark theme
 (when (>= emacs-major-version 24)
   (load-theme 'deeper-blue))

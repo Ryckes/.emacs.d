@@ -28,8 +28,8 @@
       (setq package-already-refreshed t)
       (package-refresh-contents))
     (package-install (intern package))))
-; I use intern because locate-library's argument is a string
-; and package-install's argument is a symbol's name
+;; I use intern because locate-library's argument is a string
+;; and package-install's argument is a symbol's name
  
 
 (unless (>= emacs-major-version 24)

@@ -2,7 +2,7 @@
 (package-install-if-missing "yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
-; Compatibiliy of YASnippet and auto-complete
+;; Compatibiliy of YASnippet and auto-complete
 (setq ac-source-yasnippet nil)
 (setq mode-require-final-newline nil)
 (defun add-yasnippet-dir (dir)
