@@ -1,17 +1,24 @@
 (package-install-if-missing "web-mode")
 (require 'web-mode)
+(require 'scss-mode)
 
 ;; web-mode for HTML, CSS, and PHP files
 (add-to-list 'auto-mode-alist '("\\.php" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.html" . web-mode))
 ;; Disabled
 ;;(add-to-list 'auto-mode-alist '("\\.js" . web-mode))
+
+
+(setq scss-compile-at-save nil)
 
 (setq web-mode-markup-indent-offset 4)
 (setq web-mode-css-indent-offset 4)
 (setq web-mode-code-indent-offset 4)
 (setq web-mode-indent-style 4)
+
+(setq web-mode-tag-auto-close-style 2) ; Auto close tags
 
 ;; Customizing syntax highlighting
 (setq kev-html-color "dodger blue") ; kev- is for namespacing
