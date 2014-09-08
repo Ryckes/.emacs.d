@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: SESSION variable
+# key: s
+# --
+$_SESSION['$1']$0

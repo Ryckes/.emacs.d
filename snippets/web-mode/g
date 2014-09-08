@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: GET variable
+# key: g
+# --
+$_GET['$1']$0
