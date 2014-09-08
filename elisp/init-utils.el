@@ -1,5 +1,12 @@
 
-(unless (>= emacs-major-version 24)  
+;; Enable ido
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+(global-subword-mode 1) ; CamelCase wise word navigation
+
+(unless (>= emacs-major-version 24)
   (defun split-window-right ()
     (interactive)
     (split-window-horizontally)
@@ -13,15 +20,13 @@
 
 (global-set-key (kbd "C-c c") 'load-conf-files)
 
-
 ;; Reload config files
 (defun reload-config ()
   (interactive)
   (load-file "~/.emacs.d/init.el")
 )
 
-(global-set-key (kbd "C-c i") 'reload-config);
-
+(global-set-key (kbd "C-c i") 'reload-config)
 
 (defun toggle-ui (val)
   (interactive)
@@ -61,8 +66,7 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-c C-f") 'query-replace-regexp)
 (global-set-key (kbd "C-c b") '(lambda () (interactive)
 				 (eval-buffer)
-				 (message "Buffer eval'd.") ; Need feedback
-				 ))
+				 (message "Buffer eval'd."))) ; Need feedback
 (global-set-key (kbd "C-c e") 'eval-expression)
 (global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
 (global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)

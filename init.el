@@ -2,8 +2,8 @@
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore) ; Important
 
-;; No backup files
-(setq make-backup-files nil)
+;; Move backup files
+(setq backup-directory-alist '(("." . "~/.saves")))
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "mu4e" user-emacs-directory))
