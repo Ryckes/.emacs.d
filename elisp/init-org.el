@@ -28,7 +28,7 @@
 	("DONE" . (:foreground "cyan" :weight bold)))
 
       org-tags-exclude-from-inheritance
-      '("PROJECT")
+      '("PROJECT" "NOLIST")
       
       org-stuck-projects
       '("+PROJECT/-MAYBE-DONE" ("TODO" "STARTED") nil "\\<IGNORE\\>")
@@ -38,18 +38,21 @@
 	 "* TODO %?\n %i\n")
 	("p" "Project" entry (file "~/org/organizer.org")
 	 "* %? :PROJECT:\n %i\n")
+	("l" "Learn about" entry (file+headline "~/org/organizer.org" "Learn about")
+	 "* %?\n %i\n")
 	("w" "Work" entry (file "~/org/business.org")
 	 "* TODO %?\n %i\n"))
       
       org-agenda-custom-commands
       '(("a" "My custom agenda"
 	 ((org-agenda-list nil nil 1)
-	  (tags "PROJECT/-WAITING-DONE")
-	  (tags-todo "/WAITING")
-	  (tags-todo "-MAYBE-SCHEDULED={.+}-DEADLINE={.+}/-WAITING")
+	  (tags "PROJECT/-WAITING-DONE-MAYBE")
+	  (tags-todo "-SCHEDULED={.+}/WAITING")
+	  (tags-todo "-SCHEDULED={.+}-DEADLINE={.+}/-WAITING-MAYBE")
 	  (stuck)))
-	("p" tags "PROJECT-MAYBE-DONE" nil)
-	("M" tags "PROJECT&MAYBE" nil)
+	("p" tags "PROJECT/-MAYBE-DONE" nil)
+	("M" tags "PROJECT/MAYBE" nil)
+	("l" tags "CHECKUP-NOLIST" nil)
 	("L" tags-todo "ONLINE" nil)
 	("P" tags-todo "@PHONE" nil)
 	("O" tags-todo "@COMPUTER" nil)
