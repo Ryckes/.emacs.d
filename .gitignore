@@ -4,6 +4,7 @@
 /semanticdb
 /auto-complete
 /auto-save-list
+/mu4e
 ac-comphist.dat
 abbrev_defs
 *.elc
