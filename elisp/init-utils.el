@@ -62,8 +62,6 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 
 
 ;; Some key bindings
-(global-set-key (kbd "C-c C-e") 'query-replace)
-(global-set-key (kbd "C-c C-f") 'query-replace-regexp)
 (global-set-key (kbd "C-c b") '(lambda () (interactive)
 				 (eval-buffer)
 				 (message "Buffer eval'd."))) ; Need feedback
