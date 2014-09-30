@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PHPUnit $this->assertNull
+# key: an
+# --
+$this->assertNull($1);$0

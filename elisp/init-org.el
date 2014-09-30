@@ -58,7 +58,10 @@
 	("P" tags-todo "@PHONE" nil)
 	("O" tags-todo "@COMPUTER" nil)
 	("H" tags-todo "@HOME" nil)
-	("C" tags-todo "@COLLEGE" nil)))
+	("C" tags-todo "@COLLEGE" nil))
+
+      org-columns-default-format
+      "#+COLUMNS: %25ITEM(Task) %TODO %1PRORITY %13TAGS %17Effort")
 
 (defun ryckes/export-org-tasks ()
   "Export of personal files in plain text"
@@ -113,6 +116,9 @@
   (switch-to-buffer agenda-buffer)
   (org-agenda-redo))
 
+(setq org-icalendar-include-todo '(all))
+(setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo))
+(setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
 (add-hook 'org-agenda-mode-hook
 	  (lambda ()
 	    (define-key org-agenda-mode-map "1" (lambda () (interactive) (org-agenda-todo "TODO")))
@@ -129,7 +135,8 @@
 	    (define-key org-agenda-mode-map (kbd "C-t c") (lambda () (interactive) (ryckes/org-agenda-add-tag "@COLLEGE")))
 	    (define-key org-agenda-mode-map (kbd "P") 'ryckes/export-org-tasks)
 	    (define-key org-agenda-mode-map (kbd "K t") 'ryckes/org-agenda-schedule-today)
-	    (define-key org-agenda-mode-map (kbd "K o") 'ryckes/org-agenda-schedule-tomorrow)))
+	    (define-key org-agenda-mode-map (kbd "K o") 'ryckes/org-agenda-schedule-tomorrow)
+	    (define-key org-agenda-mode-map (kbd "c") (lambda () (interactive) (org-icalendar-combine-agenda-files) (org-agenda nil "a") (delete-other-windows)))))
 
 (add-hook 'org-mode-hook
 	  (lambda ()
@@ -164,5 +171,7 @@
 	 (org-clock-out)))
      (add-hook 'org-after-todo-state-change-hook
 	       'wicked/org-clock-out-if-waiting)))
+
+
 
 (provide 'init-org)

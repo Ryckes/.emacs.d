@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: MySQLi bind_param over prepared stmt $q
+# key: bp
+# --
+$q->bind_param('$1', $2);$0

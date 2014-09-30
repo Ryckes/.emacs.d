@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Create AAA test in PHPUnit
+# key: aaa
+# --
+public function test${1:Method}() {
+ $>// Arrange
+ $>$2
+
+ $>// Act
+ $>$3
+
+ $>// Assert
+ $>$0
+}

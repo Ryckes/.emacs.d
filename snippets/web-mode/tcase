@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Create PHPUnit test case
+# key: tcase
+# --
+class ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`} extends \PHPUnit_Framework_TestCase {
+      $0
+}
