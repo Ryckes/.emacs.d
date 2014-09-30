@@ -4,7 +4,11 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
-(global-subword-mode 1) ; CamelCase wise word navigation
+(when (or (and (= emacs-major-version 23)
+	       (>= emacs-minor-version 2))
+	  (>= emacs-major-version 24))
+  (global-subword-mode 1) ; CamelCase wise word navigation
+  )
 
 (unless (>= emacs-major-version 24)
   (defun split-window-right ()
