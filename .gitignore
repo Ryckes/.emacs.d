@@ -13,3 +13,5 @@ abbrev_defs
 session.*
 bookmarks
 ido.last
+projectile.cache
+projectile-bookmarks.eld

@@ -6,7 +6,6 @@
 (setq backup-directory-alist '(("." . "~/.saves")))
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "mu4e" user-emacs-directory))
 
 ;; Get 'package' if not present and define some utilities
 (require 'init-dep)
@@ -21,8 +20,12 @@
 (require 'init-snippets)
 (require 'init-org)
 (require 'init-mu4e)
+(require 'init-projectile)
 ;; Currently disabled:
 ;; (require 'init-autocomplete)
+
+;; Local files, not in the repository (secrets)
+(require 'init-local)
 
 ;; Dark theme
 (when (>= emacs-major-version 24)
