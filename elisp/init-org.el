@@ -119,6 +119,7 @@
 (setq org-icalendar-include-todo '(all))
 (setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo))
 (setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
+
 (add-hook 'org-agenda-mode-hook
 	  (lambda ()
 	    (define-key org-agenda-mode-map "1" (lambda () (interactive) (org-agenda-todo "TODO")))
@@ -135,8 +136,7 @@
 	    (define-key org-agenda-mode-map (kbd "C-t c") (lambda () (interactive) (ryckes/org-agenda-add-tag "@COLLEGE")))
 	    (define-key org-agenda-mode-map (kbd "P") 'ryckes/export-org-tasks)
 	    (define-key org-agenda-mode-map (kbd "K t") 'ryckes/org-agenda-schedule-today)
-	    (define-key org-agenda-mode-map (kbd "K o") 'ryckes/org-agenda-schedule-tomorrow)
-	    (define-key org-agenda-mode-map (kbd "c") (lambda () (interactive) (org-icalendar-combine-agenda-files) (org-agenda nil "a") (delete-other-windows)))))
+	    (define-key org-agenda-mode-map (kbd "K o") 'ryckes/org-agenda-schedule-tomorrow)))
 
 (add-hook 'org-mode-hook
 	  (lambda ()

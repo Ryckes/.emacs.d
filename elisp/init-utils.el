@@ -1,5 +1,7 @@
 
 ;; Enable ido
+(package-install-if-missing "flx-ido")
+(flx-ido-mode)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
@@ -93,6 +95,9 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 ;; Set browser to google-chrome
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Hungry delete mode
 (package-install-if-missing "hungry-delete")
