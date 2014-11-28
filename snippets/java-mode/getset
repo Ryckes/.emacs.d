@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Get + Set
+# key: getset
+# group: OO
+# --
+$>public ${1:int} get${2:$(upcase-initials yas/text)}() {
+$>return this.$2;
+$>}
+
+$>public void set${2:$(upcase-initials yas/text)}($1 ${2:myVariable}) {
+$>this.$2 = $2;
+$>}
+
