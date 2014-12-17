@@ -58,10 +58,17 @@
 With a prefix ARG prompt for a file to visit.
 Will also prompt for a file to visit if current buffer is not visiting a file."
   (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:"
-			 (read-file-name "Find file (as root): ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+  (let ((which-function-on (assq 'which-function-mode minor-mode-alist))
+        (projectile-mode-on (assq 'projectile-mode minor-mode-alist)))
+    (message which-function-on)
+    (which-function-mode 0)
+    (projectile-global-mode 0)
+    (if (or arg (not buffer-file-name))
+        (find-file (concat "/sudo:root@localhost:"
+                           (replace-regexp-in-string "/sudo:root@localhost:" "" (read-file-name "Find file (as root): "))))
+      (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))
+    (if which-function-on (which-function-mode 1))
+    (if projectile-mode-on (projectile-global-mode 1))))
 
 (global-unset-key (kbd "C-x C-r"))
 (global-set-key (kbd "C-x C-r") 'sudo-edit)
