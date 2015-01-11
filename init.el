@@ -15,6 +15,7 @@
 (require 'init-latex)
 (require 'init-java)
 (require 'init-web)
+(require 'init-js)
 (require 'init-git)
 (require 'init-utils)
 (require 'init-snippets)
@@ -30,3 +31,4 @@
 ;; Dark theme
 (when (>= emacs-major-version 24)
   (load-theme 'deeper-blue))
+

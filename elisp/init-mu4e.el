@@ -4,11 +4,14 @@
 
 (setq mu4e-maildir "~/offlineimap/")
 
-(setq mu4e-html2text-command "w3m -dump -cols 120 -T text/html"
+(setq mu4e-html2text-command "html2markdown -b 120 | sed 's/&nbsp_place_holder;//g'"
       mu4e-view-prefer-html t
       mu4e-view-show-addresses t
       mu4e-view-show-images t
       mu4e-attachment-dir "~/Downloads")
+
+(add-to-list 'mu4e-view-actions
+	     '("bViewInBrowser" . mu4e-action-view-in-browser) t)
 
 ;; allow for updating mail using 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")

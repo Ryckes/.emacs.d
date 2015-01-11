@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: AAA Test for TDD Mocha
+# key: aaa
+# --
+$>test('$1', function(done) {
+$>// Arrange
+$>$2
+
+$>// Act
+$>$3
+
+$>// Assert
+$>$0
+$>});

@@ -6,6 +6,10 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq-default indent-tabs-mode nil)
+
 (when (or (and (= emacs-major-version 23)
 	       (>= emacs-minor-version 2))
 	  (>= emacs-major-version 24))
@@ -70,17 +74,51 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
     (if which-function-on (which-function-mode 1))
     (if projectile-mode-on (projectile-global-mode 1))))
 
+(defun rename-this-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (unless filename
+      (error "Buffer '%s' is not visiting a file!" name))
+    (if (get-buffer new-name)
+        (message "A buffer named '%s' already exists!" new-name)
+      (progn
+        (when (file-exists-p filename)
+          (rename-file filename new-name t))
+        (rename-buffer new-name)
+        (set-visited-file-name new-name)))))
+
 (global-unset-key (kbd "C-x C-r"))
 (global-set-key (kbd "C-x C-r") 'sudo-edit)
 
-
 ;; Some key bindings
+(global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-c b") '(lambda () (interactive)
 				 (eval-buffer)
 				 (message "Buffer eval'd."))) ; Need feedback
 (global-set-key (kbd "C-c e") 'eval-expression)
 (global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
 (global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)
+
+(global-set-key (kbd "C-x !") (lambda ()
+                                "Eval shell command and insert its output at point."
+                                (interactive)
+                                (let ((current-prefix-arg 4)) ; emulate C-u
+                                  (call-interactively 'shell-command))))
+(global-set-key (kbd "C-c !") (lambda ()
+                                "Eval shell command, feed it with region contents and insert its output at point."
+                                (interactive)
+                                (shell-command-on-region (region-beginning) (region-end) (read-shell-command "Shell command on region: ") t))) ; Dump to current buffer
+
+(global-set-key (kbd "M-p") 'previous-error)
+(global-set-key (kbd "M-n") 'next-error)
+(global-set-key (kbd "M-o") 'occur)
+(define-key isearch-mode-map (kbd "M-o") 'isearch-occur)
+
+(define-key occur-mode-map (kbd "p") 'previous-line)
+(define-key occur-mode-map (kbd "n") 'next-line)
+(define-key occur-mode-map (kbd "f") 'next-error-follow-minor-mode)
 
 ;; Eval and replace (for in-buffer things)
 (defun eval-and-replace ()

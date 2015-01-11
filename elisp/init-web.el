@@ -8,11 +8,13 @@
 (add-to-list 'auto-mode-alist '("\\.css" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.html" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.twig" . web-mode))
 ;; Disabled
 ;;(add-to-list 'auto-mode-alist '("\\.js" . web-mode))
 
 
 (setq scss-compile-at-save nil)
+(add-hook 'scss-mode-hook 'rainbow-mode)
 
 (setq web-mode-markup-indent-offset 4)
 (setq web-mode-css-indent-offset 4)

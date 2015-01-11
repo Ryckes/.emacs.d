@@ -7,6 +7,7 @@
       org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
       org-agenda-start-on-weekday 1 ; Start on Monday
+      org-agenda-window-setup 'current-window
 
       org-agenda-files
       '("~/org/organizer.org" "~/org/business.org")
@@ -60,8 +61,10 @@
 	("H" tags-todo "@HOME" nil)
 	("C" tags-todo "@COLLEGE" nil))
 
+      org-enforce-todo-dependencies t
+
       org-columns-default-format
-      "#+COLUMNS: %25ITEM(Task) %TODO %1PRORITY %13TAGS %17Effort")
+      "#+COLUMNS: %40ITEM(Task) %TODO %1PRORITY %13TAGS %17Effort %CLOCKSUM")
 
 (defun ryckes/export-org-tasks ()
   "Export of personal files in plain text"
