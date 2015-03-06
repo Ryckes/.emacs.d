@@ -6,15 +6,48 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+(delete-selection-mode 1)
+
+(pdf-tools-install)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 (when (or (and (= emacs-major-version 23)
 	       (>= emacs-minor-version 2))
 	  (>= emacs-major-version 24))
   (global-subword-mode 1) ; CamelCase wise word navigation
   )
+
+
+(global-set-key (kbd "C-o") (lambda ()
+                              (interactive)
+                              (open-line 1)
+                              (save-excursion
+                                (next-line)
+                                (indent-according-to-mode))))
+
+;; Thanks to http://www.emacswiki.org/emacs/CamelCase
+(defun split-name (s)
+  (split-string
+   (let ((case-fold-search nil))
+     (downcase
+      (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
+   "[^A-Za-z0-9]+"))
+
+(defun mapcar-head (fn-head fn-rest list)
+  (if list
+      (cons (funcall fn-head (car list)) (mapcar fn-rest (cdr list)))))
+  
+(defun camelize-from-dashes (s) ; to camelCase
+  (mapconcat 'identity
+             (mapcar-head
+              'downcase
+              'capitalize
+              (split-name s)) ""))
+
 
 (unless (>= emacs-major-version 24)
   (defun split-window-right ()
@@ -34,7 +67,7 @@
 (defun reload-config ()
   (interactive)
   (load-file "~/.emacs.d/init.el")
-)
+  )
 
 (global-set-key (kbd "C-c i") 'reload-config)
 
@@ -100,6 +133,8 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-c e") 'eval-expression)
 (global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
 (global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)
+
+(global-set-key (kbd "C-x y") 'eshell)
 
 (global-set-key (kbd "C-x !") (lambda ()
                                 "Eval shell command and insert its output at point."

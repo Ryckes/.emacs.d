@@ -16,3 +16,6 @@ ido.last
 projectile.cache
 projectile-bookmarks.eld
 .mc-lists.el
+.cask
+/recentf
+/url

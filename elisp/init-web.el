@@ -12,9 +12,9 @@
 ;; Disabled
 ;;(add-to-list 'auto-mode-alist '("\\.js" . web-mode))
 
-
 (setq scss-compile-at-save nil)
 (add-hook 'scss-mode-hook 'rainbow-mode)
+(add-hook 'scss-mode-hook 'auto-complete-mode)
 
 (setq web-mode-markup-indent-offset 4)
 (setq web-mode-css-indent-offset 4)
