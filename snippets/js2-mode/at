@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chai assert.isTrue
+# key: at
+# --
+$>assert.isTrue($1);$0

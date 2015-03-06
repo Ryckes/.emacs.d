@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: AAA Test for TDD Mocha
-# key: aaa
+# name: AAA Test for BDD Mocha
+# key: it
 # --
-$>test('$1', function() {
+$>it('$1', function() {
 $>// Arrange
 $>$2
 

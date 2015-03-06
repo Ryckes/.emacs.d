@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: NodeJS simple require
+# key: req
+# --
+require('$1')$0

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: JavaScript module
+# key: module
+# --
+;(function(exports) {
+
+$>$0
+
+}(typeof exports === 'undefined'? this : exports));

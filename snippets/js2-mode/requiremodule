@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: NodeJS module require
+# key: mod
+# --
+$>${1:$(camelize-from-dashes (replace-regexp-in-string "\\\\." "" (replace-regexp-in-string "/" "" yas/text)))} = require('$1')$0

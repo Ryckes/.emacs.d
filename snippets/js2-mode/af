@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chai assert.isFalse
+# key: af
+# --
+$>assert.isFalse($1);$0

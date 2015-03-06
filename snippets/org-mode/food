@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Food template
+# key: food
+# --
+$>* ${1:Food name} (${2:100g})
+$>** Calories
+$>$3kcal
+$>** Fat
+$>$4g, $5g sat
+$>** Carbs
+$>$6g, ${7:$6}g sugar
+$>** Protein
+$>$8g
+$0
