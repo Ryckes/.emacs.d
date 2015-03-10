@@ -21,6 +21,9 @@
   (global-subword-mode 1) ; CamelCase wise word navigation
   )
 
+;; *scratch* buffer
+(setq initial-major-mode 'org-mode
+      initial-scratch-message nil)
 
 (global-set-key (kbd "C-o") (lambda ()
                               (interactive)
