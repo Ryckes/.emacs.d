@@ -1,6 +1,9 @@
 
 (require 'compile)
 (require 'octave)
+
+(add-to-list 'auto-mode-alist '("\\.m" . octave-mode))
+
 (add-hook 'octave-mode-hook
           (lambda ()
             (auto-complete-mode)
