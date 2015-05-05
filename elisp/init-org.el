@@ -46,7 +46,7 @@
         ("k" "My web" entry (file "~/server/personal/TODO.org")
          "* %?\n %i\n")
         ("w" "Work" entry (file "~/org/business.org")
-         "* TODO %?\n %i\n"))
+         "* TODO %? :WORK:\n %i\n"))
       
       org-agenda-custom-commands
       '(("a" "Agenda"
@@ -66,7 +66,8 @@
         ("P" "Need to be on the phone" tags-todo "@PHONE" nil)
         ("O" "Need to use the computer" tags-todo "@COMPUTER" nil)
         ("H" "Need to be at home" tags-todo "@HOME" nil)
-        ("C" "Need to be in college" tags-todo "@COLLEGE" nil))
+        ("C" "Need to be in college" tags-todo "@COLLEGE" nil)
+        ("w" "Work" tags "WORK" nil))
 
       org-enforce-todo-dependencies t
 
@@ -163,6 +164,7 @@
           (lambda ()
             (setq truncate-lines nil)
             (global-unset-key (kbd "C-t"))
+            (define-key org-mode-map (kbd "C-'") 'help-command)
             (define-key org-mode-map (kbd "C-t C-t") 'ryckes/org-add-tag)
             (define-key org-mode-map (kbd "C-t t") 'ryckes/org-add-tag)
             (define-key org-mode-map (kbd "C-t l") (lambda () (interactive) (ryckes/org-add-tag "ONLINE")))
@@ -192,6 +194,16 @@
          (org-clock-out)))
      (add-hook 'org-after-todo-state-change-hook
                'wicked/org-clock-out-if-waiting)))
+
+(defun sacha-chua/org-review-month (start-date)
+  "Review the month's clocked tasks and time."
+  (interactive (list (org-read-date)))
+  ;; Set to the beginning of the month
+  (let ((org-agenda-show-log t)
+        (org-agenda-start-with-log-mode t)
+        (org-agenda-start-with-clockreport-mode t)
+        (org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3)))
+    (org-agenda-list nil start-date 'month)))
 
 
 

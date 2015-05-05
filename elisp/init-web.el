@@ -21,6 +21,7 @@
 (setq web-mode-code-indent-offset 4)
 (setq web-mode-indent-style 4)
 
+(setq web-mode-enable-current-element-highlight t)
 (setq web-mode-tag-auto-close-style 2) ; Auto close tags
 
 ;; Customizing syntax highlighting
@@ -41,5 +42,19 @@
 (define-key web-mode-map (kbd "C-x t a") 'phpunit-current-project) ; a for all
 (define-key web-mode-map (kbd "C-x t c") 'phpunit-current-class) ; c for class
 (define-key web-mode-map (kbd "C-x t t") 'phpunit-current-test) ; t for test
+
+(define-key web-mode-map (kbd "C-c c") 'web-mode-element-close)
+(define-key web-mode-map (kbd "C-c f") 'web-mode-fold-or-unfold)
+(define-key web-mode-map (kbd "C-c k") 'web-mode-element-kill)
+(define-key web-mode-map (kbd "C-c l") 'web-mode-element-clone)
+(define-key web-mode-map (kbd "C-M-n") 'web-mode-element-next)
+(define-key web-mode-map (kbd "C-M-p") 'web-mode-element-previous)
+(define-key web-mode-map (kbd "C-c s") 'web-mode-element-select)
+(define-key web-mode-map (kbd "C-c u") 'web-mode-element-parent)
+(define-key web-mode-map (kbd "C-c v") 'web-mode-element-vanish)
+(define-key web-mode-map (kbd "C-c w") 'web-mode-element-wrap)
+
+(defadvice web-mode-element-close (after reindent-buffer activate)
+  (cleanup-buffer))
 
 (provide 'init-web)

@@ -12,6 +12,9 @@
 (define-key c-mode-base-map (kbd "C-c C-c") 'compile)
 (define-key c-mode-base-map (kbd "C-c C-r") 'recompile)
 
+(define-key c-mode-base-map (kbd "C-d") 'c-hungry-delete-forward)
+(define-key c-mode-base-map (kbd "DEL") 'c-hungry-delete-backwards)
+
 ;; From EmacsWiki, modified
 (require 'compile)
 (add-hook 'c++-mode-hook

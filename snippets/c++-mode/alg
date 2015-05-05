@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Include for algorithm
+# key: alg
+# --
+$>#include <algorithm>

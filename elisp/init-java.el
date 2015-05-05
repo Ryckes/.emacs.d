@@ -18,4 +18,7 @@
 (define-key java-mode-map (kbd "C-c C-c") 'compile)
 (define-key java-mode-map (kbd "C-c C-r") 'recompile)
 
+(define-key java-mode-map (kbd "C-d") 'c-hungry-delete-forward)
+(define-key java-mode-map (kbd "DEL") 'c-hungry-delete-backwards)
+
 (provide 'init-java)

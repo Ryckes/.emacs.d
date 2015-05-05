@@ -16,8 +16,8 @@
 (setq-default tab-width 4)
 
 (when (or (and (= emacs-major-version 23)
-	       (>= emacs-minor-version 2))
-	  (>= emacs-major-version 24))
+               (>= emacs-minor-version 2))
+          (>= emacs-major-version 24))
   (global-subword-mode 1) ; CamelCase wise word navigation
   )
 
@@ -43,7 +43,7 @@
 (defun mapcar-head (fn-head fn-rest list)
   (if list
       (cons (funcall fn-head (car list)) (mapcar fn-rest (cdr list)))))
-  
+
 (defun camelize-from-dashes (s) ; to camelCase
   (mapconcat 'identity
              (mapcar-head
@@ -91,6 +91,23 @@
 
 (hide-ui) ; Please
 
+;; Thanks to magnars
+(defun untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Including indent-buffer, which should not be called automatically on save."
+  (interactive)
+  (untabify-buffer)
+  (delete-trailing-whitespace)
+  (indent-buffer))
+
 ;; Holy sudo-edit
 (defun sudo-edit (&optional arg)
   "Edit currently visited file as root.
@@ -129,10 +146,23 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-x C-r") 'sudo-edit)
 
 ;; Some key bindings
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-ñ") 'undo)
+
+(global-set-key (kbd "C-c o") (lambda (&optional n)
+                                (interactive "p")
+                                (if n
+                                    (other-window (- n))
+                                  (other-window -1))))
+
+(global-set-key (kbd "C-'") 'help-command)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
+
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-c b") '(lambda () (interactive)
-				 (eval-buffer)
-				 (message "Buffer eval'd."))) ; Need feedback
+                                 (eval-buffer)
+                                 (message "Buffer eval'd."))) ; Need feedback
 (global-set-key (kbd "C-c e") 'eval-expression)
 (global-set-key (kbd "C-<kp-add>") 'text-scale-increase)
 (global-set-key (kbd "C-<kp-subtract>") 'text-scale-decrease)
@@ -158,6 +188,10 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (define-key occur-mode-map (kbd "n") 'next-line)
 (define-key occur-mode-map (kbd "f") 'next-error-follow-minor-mode)
 
+;; Multiple cursors
+(global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
+(global-set-key (kbd "H-m") 'mc/mark-all-dwim)
+
 ;; Eval and replace (for in-buffer things)
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -165,11 +199,11 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
   (backward-kill-sexp)
   (condition-case nil
       (prin1 (eval (read (current-kill 0)))
-	     (current-buffer))
+             (current-buffer))
     (error (message "Invalid expression")
-	   (insert (current-kill 0)))))
+           (insert (current-kill 0)))))
 
-(global-set-key (kbd "C-c g") 'eval-and-replace)
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
 
 
 ;; Remove annoying message "this buffer still has clients" when killing a buffer
