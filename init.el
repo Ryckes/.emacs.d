@@ -7,12 +7,15 @@
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-;; Dark theme
-(when (>= emacs-major-version 24)
-  (load-theme 'deeper-blue))
-
 ;; Get 'package' if not present and define some utilities
 (require 'init-dep)
+
+;; Dark theme
+(if (>= emacs-major-version 24)
+  (load-theme 'deeper-blue)
+  (progn
+    (package-install-if-missing "solarized-theme")
+    (load-theme 'solarized-dark)))
 
 (require 'init-encoding)
 (require 'init-c)
@@ -34,4 +37,3 @@
 
 ;; Local files, not in the repository (secrets)
 (require 'init-local)
-
