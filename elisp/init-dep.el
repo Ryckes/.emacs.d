@@ -35,7 +35,7 @@
 (unless (>= emacs-major-version 24)
   (add-to-list 'load-path (expand-file-name "package" dependency-directory))
   (unless (locate-library "package")
-    (download-dependency "package" "http://bit.ly/pkg-el23")))
+    (download-dependency "package" "http://bit.ly/pkg-23")))
 
 (require 'package)
 ;; Add MELPA repo

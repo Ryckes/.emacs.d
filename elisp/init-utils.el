@@ -8,7 +8,8 @@
 
 (delete-selection-mode 1)
 
-(pdf-tools-install)
+(if (functionp 'pdf-tools-install)
+    (pdf-tools-install))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
