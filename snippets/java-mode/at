@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: JUnit assertTrue
+# key: at
+# --
+assertTrue($1);$0

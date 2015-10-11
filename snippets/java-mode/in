@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Scanner imports
+# key: in
+# --
+$>import java.util.Scanner;
+$>import java.util.Locale;

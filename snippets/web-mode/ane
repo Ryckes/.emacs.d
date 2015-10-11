@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PHPUnit $this->assertNotEquals
+# key: ane
+# --
+\$this->assertNotEquals(${1:\$expectedValue}, ${2:\$computedValue}));$0

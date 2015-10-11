@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PDO bindParam with a quoted parameter
+# key: bps
+# --
+$>\$${1:q}->bindParam(':$2', \$${3:$2});$0

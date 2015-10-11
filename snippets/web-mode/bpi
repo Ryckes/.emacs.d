@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PDO bindParam with a nonquoted parameter
+# key: bpi
+# --
+$>\$${1:q}->bindParam(':$2', \$${3:$2}, PDO::PARAM_INT);$0

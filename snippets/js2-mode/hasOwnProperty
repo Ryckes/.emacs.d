@@ -2,8 +2,8 @@
 # name: hasOwnProperty, with its for loop
 # key: hop
 # --
-$>for(var ${1:key} in ${2:object}) {
-$>if($2.hasOwnProperty($1)) {
+$>for (var ${1:key} in ${2:object}) {
+$>if ($2.hasOwnProperty($1)) {
 $>$0
 $>}
 $>}

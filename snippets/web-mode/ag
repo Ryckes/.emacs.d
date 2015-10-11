@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PHPUnit $this->assertGreater
+# key: ag
+# --
+$this->assertGreaterThan($1, $2);$0
