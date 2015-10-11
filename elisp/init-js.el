@@ -15,6 +15,10 @@
 (require 'compile)
 (add-hook 'js2-mode-hook
           (lambda ()
+            ;; Enable js2-refactor
+            (js2-refactor-mode)
+
+            ;; Set up compile command
             (set (make-local-variable 'compile-command)
                  (let ((file (file-name-nondirectory buffer-file-name)))
                    (format "%s %s"

@@ -9,7 +9,7 @@
 
       (setq mu4e-maildir "~/offlineimap/")
 
-      (setq mu4e-html2text-command "html2markdown -b 120 | sed 's/&nbsp_place_holder;//g'"
+      (setq mu4e-html2text-command "html2text -utf8 -nobs -width 200"
             mu4e-view-prefer-html t
             mu4e-view-show-addresses t
             mu4e-view-show-images t

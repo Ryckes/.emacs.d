@@ -39,6 +39,8 @@
 				      (self-insert-command char)
 				      (indent-for-tab-command)
 				      ))
+
+
 (define-key web-mode-map (kbd "C-x t a") 'phpunit-current-project) ; a for all
 (define-key web-mode-map (kbd "C-x t c") 'phpunit-current-class) ; c for class
 (define-key web-mode-map (kbd "C-x t t") 'phpunit-current-test) ; t for test

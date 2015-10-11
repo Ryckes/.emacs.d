@@ -21,14 +21,15 @@
 	  (lambda ()
 	    (unless (file-exists-p "Makefile")
 	      (set (make-local-variable 'compile-command)
-		   ;; $(CC) -o $@ $(CPPFLAGS) $(CFLAGS) $<
-		   (let ((file (file-name-nondirectory buffer-file-name)))
-		     (format "%s -o %s %s %s %s"
-			     (or (getenv "CC") "g++")
-			     (file-name-sans-extension file)
-			     (or (getenv "CPPFLAGS") "-std=c++0x")
-			     (or (getenv "CFLAGS") "-Wall -g")
-			     file))))))
+               ;; $(CC) -o $@ $(CPPFLAGS) $(CFLAGS) $<
+               (let ((file (file-name-nondirectory buffer-file-name)))
+                 (format "%s -o %s %s %s %s && ./%s"
+                         (or (getenv "CC") "g++")
+                         (file-name-sans-extension file)
+                         (or (getenv "CPPFLAGS") "-std=c++0x")
+                         (or (getenv "CFLAGS") "-Wall -g")
+                         file
+                         (file-name-sans-extension file)))))))
 (add-hook 'c-mode-hook
 	  (lambda ()
 	    (unless (file-exists-p "Makefile")

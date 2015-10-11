@@ -8,8 +8,8 @@
 
 (delete-selection-mode 1)
 
-(if (functionp 'pdf-tools-install)
-    (pdf-tools-install))
+;;(if (functionp 'pdf-tools-install)
+;;    (pdf-tools-install))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -149,6 +149,7 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 ;; Some key bindings
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-ñ") 'undo)
+(global-set-key (kbd "M-r") 'revert-buffer)
 
 (global-set-key (kbd "C-c o") (lambda (&optional n)
                                 (interactive "p")
@@ -189,9 +190,23 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (define-key occur-mode-map (kbd "n") 'next-line)
 (define-key occur-mode-map (kbd "f") 'next-error-follow-minor-mode)
 
+
+;; Npm test
+(global-set-key (kbd "M-ñ") (lambda ()
+                              "Run `npm test`"
+                              (interactive)
+                              (let ((default-directory
+                                      (locate-dominating-file default-directory "package.json")))
+                                (compile "npm test"))))
+;; Good npm test formatting, comes from https://github.com/defunkt/coffee-mode/issues/306
+(eval-after-load 'compile
+  '(add-hook 'compilation-filter-hook
+             (lambda () (ansi-color-process-output nil))))
+
 ;; Multiple cursors
 (global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
 (global-set-key (kbd "H-m") 'mc/mark-all-dwim)
+(global-set-key (kbd "H-n") 'mc/mark-next-like-this)
 
 ;; Eval and replace (for in-buffer things)
 (defun eval-and-replace ()
@@ -221,5 +236,9 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (package-install-if-missing "hungry-delete")
 (require 'hungry-delete)
 (global-hungry-delete-mode)
+
+;; Markdown mode
+(package-install-if-missing "markdown-mode")
+(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 
 (provide 'init-utils)

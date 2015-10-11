@@ -12,6 +12,8 @@
       org-agenda-files
       '("~/org/organizer.org" "~/org/business.org" "~/org/notes.org")
       
+      org-refile-targets '((org-agenda-files :tag . "PROJECT") ("organizer.org" :level . 1))
+
       org-todo-keywords
       '((sequence
          "TODO(t)"
@@ -19,7 +21,7 @@
          "MAYBE(m)"
          "WAITING(w)"
          "|"
-         "DONE(d)"))
+         "DONE(d!)"))
 
       org-todo-keyword-faces
       '(("TODO" . (:foreground "tan1" :weight bold))
@@ -41,6 +43,8 @@
          "* %? :PROJECT:\n %i\n")
         ("l" "Learn about" entry (file+headline "~/org/organizer.org" "Learn about")
          "* %?\n %i\n")
+        ("h" "Habit" entry (file "~/org/organizer.org")
+         "* TODO %?\n %i\n SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\") nil nil nil nil \" .+1d\")\n :PROPERTIES:\n :STYLE: habit\n :END:\n")
         ("n" "Note" entry (file "~/org/notes.org")
          "* %? :NOTE:\n %i\n")
         ("k" "My web" entry (file "~/server/personal/TODO.org")
@@ -55,6 +59,7 @@
           (tags-todo "/WAITING")
           (tags-todo "-SCHEDULED={.+}-DEADLINE={.+}/-WAITING-MAYBE")
           (stuck)))
+        ;; (org-habit-graph-column)))
         ;; ("b" tags-todo "/MAYBE")
         ("p" "Projects" tags "PROJECT/-MAYBE-DONE" nil)
         ;; ("M" tags "PROJECT/MAYBE" nil)
@@ -157,11 +162,12 @@
             (define-key org-agenda-mode-map (kbd "C-t h") (lambda () (interactive) (ryckes/org-agenda-add-tag "@HOME")))
             (define-key org-agenda-mode-map (kbd "C-t c") (lambda () (interactive) (ryckes/org-agenda-add-tag "@COLLEGE")))
             (define-key org-agenda-mode-map (kbd "P") 'ryckes/export-org-tasks)
-            (define-key org-agenda-mode-map (kbd "K t") 'ryckes/org-agenda-schedule-today)
-            (define-key org-agenda-mode-map (kbd "K o") 'ryckes/org-agenda-schedule-tomorrow)))
+            (define-key org-agenda-mode-map (kbd "W t") 'ryckes/org-agenda-schedule-today)
+            (define-key org-agenda-mode-map (kbd "W o") 'ryckes/org-agenda-schedule-tomorrow)))
 
 (add-hook 'org-mode-hook
           (lambda ()
+            (setq org-habit-graph-column 80)
             (setq truncate-lines nil)
             (global-unset-key (kbd "C-t"))
             (define-key org-mode-map (kbd "C-'") 'help-command)
@@ -204,7 +210,6 @@
         (org-agenda-start-with-clockreport-mode t)
         (org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3)))
     (org-agenda-list nil start-date 'month)))
-
 
 
 (provide 'init-org)
