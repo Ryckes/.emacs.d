@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Include for vector
+# key: ivec
+# --
+#include <vector>

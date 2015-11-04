@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: JUnit assertFalse
+# key: af
+# --
+assertFalse($1);$0
