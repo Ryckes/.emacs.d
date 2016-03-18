@@ -2,6 +2,10 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c r") 'org-capture)
 
+(package-install-if-missing "org-alert")
+(require 'org-alert)
+(org-alert-enable)
+
 (setq org-agenda-span 3
       org-agenda-show-log t
       org-agenda-skip-scheduled-if-done t
@@ -43,6 +47,8 @@
          "* %? :PROJECT:\n %i\n")
         ("l" "Learn about" entry (file+headline "~/org/organizer.org" "Learn about")
          "* %?\n %i\n")
+        ("i" "Idea" entry (file+headline "~/org/organizer.org" "Ideas")
+         "* %? :IDEA:\n %i\n")
         ("h" "Habit" entry (file "~/org/organizer.org")
          "* TODO %?\n %i\n SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\") nil nil nil nil \" .+1d\")\n :PROPERTIES:\n :STYLE: habit\n :END:\n")
         ("n" "Note" entry (file "~/org/notes.org")
@@ -57,7 +63,7 @@
          ((org-agenda-list nil nil 1)
           (tags "PROJECT/-WAITING-DONE-MAYBE")
           (tags-todo "/WAITING")
-          (tags-todo "-SCHEDULED={.+}-DEADLINE={.+}/-WAITING-MAYBE")
+          (tags-todo "-SCHEDULED={.+}/-WAITING-MAYBE")
           (stuck)))
         ;; (org-habit-graph-column)))
         ;; ("b" tags-todo "/MAYBE")
@@ -67,6 +73,7 @@
         ("k" "My web" todo ""
          ((org-agenda-files '("~/server/personal/TODO.org"))))
         ("l" "To learn" tags "CHECKUP-NOLIST" nil)
+        ("i" "Ideas" tags "IDEA" nil)
         ("L" "Need to be online" tags-todo "ONLINE" nil)
         ("P" "Need to be on the phone" tags-todo "@PHONE" nil)
         ("O" "Need to use the computer" tags-todo "@COMPUTER" nil)
@@ -88,7 +95,9 @@
                                 ("2" . (lambda () (interactive) (org-todo "STARTED")))
                                 ("3" . (lambda () (interactive) (org-todo "MAYBE")))
                                 ("4" . (lambda () (interactive) (org-todo "WAITING")))
-                                ("5" . (lambda () (interactive) (org-todo "DONE")))))
+                                ("5" . (lambda () (interactive) (org-todo "DONE"))))
+
+      alert-default-style 'libnotify)
 
 (defun ryckes/export-org-tasks ()
   "Export of personal files in plain text"
