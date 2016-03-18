@@ -147,7 +147,6 @@ Will also prompt for a file to visit if current buffer is not visiting a file."
 (global-set-key (kbd "C-x C-r") 'sudo-edit)
 
 ;; Some key bindings
-(global-set-key (kbd "C-c C-c") 'compile)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-ñ") 'undo)
 (global-set-key (kbd "M-r") 'revert-buffer)
