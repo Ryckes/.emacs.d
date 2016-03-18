@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Includes for competitions
+# key: comp
+# --
+$>#include <iostream>
+$>#include <cstring>
+$>#include <algorithm>
+$>#include <stack>
+$>#include <vector>
+$>#include <queue>
+$>#include <utility>
+
+using namespace std;
+
+int main(int argc, char *argv[]) {
+$>$0
+
+$>return 0;
+}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cout with newline
+# key: cl
+# --
+$>cout << $1 << endl;$0
