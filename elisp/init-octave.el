@@ -9,6 +9,7 @@
   (add-hook 'octave-mode-hook
             (lambda ()
               (auto-complete-mode)
+              (setq octave-block-offset 4)
               (set (make-local-variable 'compile-command)
                    (let ((file (file-name-nondirectory buffer-file-name)))
                      (format "octave -q %s"

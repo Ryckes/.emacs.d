@@ -97,7 +97,8 @@
                                 ("4" . (lambda () (interactive) (org-todo "WAITING")))
                                 ("5" . (lambda () (interactive) (org-todo "DONE"))))
 
-      alert-default-style 'libnotify)
+      alert-default-style 'libnotify
+      org-alert-interval 1500)
 
 (defun ryckes/export-org-tasks ()
   "Export of personal files in plain text"

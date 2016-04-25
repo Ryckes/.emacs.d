@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Module exposed interface
+# key: exp
+# --
+module.exports = { $1 };$0
