@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chai assert.isNotNull
+# key: ann
+# --
+$>assert.isNotNull($1);$0
