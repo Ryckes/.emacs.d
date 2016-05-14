@@ -92,6 +92,8 @@
 
 (hide-ui) ; Please
 
+(setq delete-trailing-lines nil)
+
 ;; Thanks to magnars
 (defun untabify-buffer ()
   (interactive)
