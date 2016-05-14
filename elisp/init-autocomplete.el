@@ -1,5 +1,6 @@
 
 (package-install-if-missing "auto-complete")
+(package-install-if-missing "ac-math")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
