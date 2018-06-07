@@ -1,4 +1,11 @@
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore) ; Important
 
@@ -30,7 +37,6 @@
 (require 'init-utils)
 (require 'init-snippets)
 (require 'init-autocomplete)
-(require 'init-org)
 (require 'init-mu4e)
 (require 'init-projectile)
 ;; (require 'init-helm)
@@ -42,9 +48,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))))
+ '(org-agenda-files nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
